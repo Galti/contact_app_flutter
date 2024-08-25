@@ -39,6 +39,19 @@ class _AddContactScreenState extends State<AddContactScreen> {
   }
 
   @override
+  void dispose() {
+    firstNameController.dispose();
+    lastNameController.dispose();
+    phoneNumberController.dispose();
+    str1Controller.dispose();
+    str2Controller.dispose();
+    cityController.dispose();
+    stateController.dispose();
+    zipController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -123,6 +136,8 @@ class _AddContactScreenState extends State<AddContactScreen> {
           if (widget.contact == null) {
             return handleContactCreate();
           }
+
+          handleContactUpdate();
         },
         label: Text(widget.contact == null ? 'Create' : 'Save'),
         // icon: const Icon(Icons.add),
@@ -144,6 +159,24 @@ class _AddContactScreenState extends State<AddContactScreen> {
               zipCode: zipController.text,
             ),
           );
+      context.pop();
+    }
+  }
+
+  void handleContactUpdate() {
+    if (widget.contact != null && firstNameController.text.isNotEmpty && phoneNumberController.text.isNotEmpty) {
+      final contact = widget.contact!.copyWith(
+        phoneNumber: phoneNumberController.text,
+        firstName: firstNameController.text,
+        lastName: lastNameController.text,
+        streetAddress1: str1Controller.text,
+        streetAddress2: str2Controller.text,
+        city: cityController.text,
+        state: stateController.text,
+        zipCode: zipController.text,
+      );
+
+      context.read<ContactBloc>().add(ContactUpdated(contact: contact));
       context.pop();
     }
   }

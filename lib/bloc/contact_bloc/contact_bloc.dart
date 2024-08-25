@@ -10,6 +10,7 @@ class ContactBloc extends Bloc<ContactEvent, ContactState> {
     on<InitRequested>(_onInitRequested);
     on<ContactRemoved>(_onContactRemoved);
     on<ContactCreated>(_onContactCreated);
+    on<ContactUpdated>(_onContactUpdated);
   }
 
   Future<void> _onInitRequested(
@@ -70,6 +71,27 @@ class ContactBloc extends Bloc<ContactEvent, ContactState> {
         state: event.state,
         zipCode: event.zipCode,
       );
+      await Future.delayed(const Duration(seconds: 2));
+
+      final contacts = await objectbox.getContacts().first;
+      emit(
+        state.copyWith(
+          status: LoadableBlocStatus.success,
+          contacts: contacts,
+        ),
+      );
+    } catch (e) {
+      // TODO handle if needed
+    }
+  }
+
+  Future<void> _onContactUpdated(
+    ContactUpdated event,
+    Emitter<ContactState> emit,
+  ) async {
+    emit(state.copyWith(status: LoadableBlocStatus.loading));
+    try {
+      await objectbox.updateContact(event.contact);
       await Future.delayed(const Duration(seconds: 2));
 
       final contacts = await objectbox.getContacts().first;
