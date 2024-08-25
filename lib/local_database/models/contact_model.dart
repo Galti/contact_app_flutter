@@ -31,7 +31,7 @@ class Contact {
   });
 
   static Contact fromJson(Map<String, dynamic> json) => Contact(
-        contactId: const Uuid().toString(),
+        contactId: const Uuid().v4(),
         phoneNumber: json['phoneNumber'],
         firstName: json['firstName'],
         lastName: json['lastName'],

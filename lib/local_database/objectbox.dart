@@ -71,7 +71,7 @@ class ObjectBox {
 
     return _contactsBox.putAsync(
       Contact(
-        contactId: contactId ?? const Uuid().toString(),
+        contactId: contactId ?? const Uuid().v4(),
         firstName: firstName,
         lastName: lastName,
         phoneNumber: phoneNumber,
@@ -90,7 +90,7 @@ class ObjectBox {
     return _contactsBox.putAsync(contact);
   }
 
-  Future<void> removeContact(int id) {
+  Future<bool> removeContact(int id) {
     Logger().i('Remove contact: $id');
 
     return _contactsBox.removeAsync(id);

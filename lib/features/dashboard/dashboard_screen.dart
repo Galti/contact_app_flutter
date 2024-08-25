@@ -29,7 +29,21 @@ class DashboardScreen extends StatelessWidget {
                   )
                 : SingleChildScrollView(
                     child: Column(
-                      children: state.contacts.map((c) => ContactListItem(contact: c)).toList(),
+                      children: state.contacts
+                          .map(
+                            (c) => ContactListItem(
+                              contact: c,
+                              onDelete: () {
+                                context.read<DashboardBloc>().add(ContactRemoved(id: c.id));
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text('Contact Removed!'),
+                                  ),
+                                );
+                              },
+                            ),
+                          )
+                          .toList(),
                     ),
                   );
           },

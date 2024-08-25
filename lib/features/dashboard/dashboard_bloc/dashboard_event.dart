@@ -10,3 +10,9 @@ sealed class DashboardEvent extends Equatable {
 class InitRequested extends DashboardEvent {
   const InitRequested();
 }
+
+class ContactRemoved extends DashboardEvent {
+  final int id;
+
+  const ContactRemoved({required this.id});
+}
