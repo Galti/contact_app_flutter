@@ -5,11 +5,13 @@ import '../local_database/models/contact_model.dart';
 class ContactListItem extends StatelessWidget {
   final Contact contact;
   final VoidCallback onDelete;
+  final VoidCallback onTap;
 
   const ContactListItem({
     super.key,
     required this.contact,
     required this.onDelete,
+    required this.onTap,
   });
 
   @override
@@ -21,6 +23,7 @@ class ContactListItem extends StatelessWidget {
       },
       background: Container(color: Colors.red),
       child: ListTile(
+        onTap: onTap,
         leading: CircleAvatar(
           backgroundColor: Colors.blueAccent,
           child: Text(

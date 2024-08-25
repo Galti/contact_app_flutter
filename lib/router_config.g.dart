@@ -9,6 +9,7 @@ part of 'router_config.dart';
 List<RouteBase> get $appRoutes => [
       $splashRoute,
       $dashboardRoute,
+      $addContactRoute,
     ];
 
 RouteBase get $splashRoute => GoRouteData.$route(
@@ -54,4 +55,30 @@ extension $DashboardRouteExtension on DashboardRoute {
       context.pushReplacement(location);
 
   void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $addContactRoute => GoRouteData.$route(
+      path: '/add-contact',
+      factory: $AddContactRouteExtension._fromState,
+    );
+
+extension $AddContactRouteExtension on AddContactRoute {
+  static AddContactRoute _fromState(GoRouterState state) => AddContactRoute(
+        $extra: state.extra as Contact?,
+      );
+
+  String get location => GoRouteData.$location(
+        '/add-contact',
+      );
+
+  void go(BuildContext context) => context.go(location, extra: $extra);
+
+  Future<T?> push<T>(BuildContext context) =>
+      context.push<T>(location, extra: $extra);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location, extra: $extra);
+
+  void replace(BuildContext context) =>
+      context.replace(location, extra: $extra);
 }

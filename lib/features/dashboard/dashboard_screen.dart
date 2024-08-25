@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../enums/loadable_bloc_status.dart';
+import '../../router_config.dart';
 import '../../widgets/contact_list_item.dart';
 import 'dashboard_bloc/dashboard_bloc.dart';
 import 'dashboard_bloc/dashboard_event.dart';
@@ -41,6 +42,9 @@ class DashboardScreen extends StatelessWidget {
                                   ),
                                 );
                               },
+                              onTap: () {
+                                AddContactRoute($extra: c).push(context);
+                              },
                             ),
                           )
                           .toList(),
@@ -51,7 +55,7 @@ class DashboardScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          // Add your onPressed code here!
+          const AddContactRoute().push(context);
         },
         label: const Text('Add'),
         icon: const Icon(Icons.add),
