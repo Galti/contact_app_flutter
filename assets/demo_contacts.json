@@ -1,0 +1,102 @@
+[
+  {
+    "firstName": "Alan",
+    "lastName": "Turing",
+    "phoneNumber": "+11234567890",
+    "streetAddress1": "123 Main St",
+    "streetAddress2": "Apt 1",
+    "city": "Anytown",
+    "state": "CA",
+    "zipCode": "12345"
+  },
+  {
+    "firstName": "Grace",
+    "lastName": "Hopper",
+    "phoneNumber": "+19876543210",
+    "streetAddress1": "456 Elm St",
+    "streetAddress2": "",
+    "city": "Anothertown",
+    "state": "NY",
+    "zipCode": "54321"
+  },
+  {
+    "firstName": "Ada",
+    "lastName": "Lovelace",
+    "phoneNumber": "+15551234567",
+    "streetAddress1": "789 Oak St",
+    "streetAddress2": "",
+    "city": "Somewhere",
+    "state": "TX",
+    "zipCode": "32109"
+  },
+  {
+    "firstName": "Dennis",
+    "lastName": "Ritchie",
+    "phoneNumber": "+11112223333",
+    "streetAddress1": "101 Pine St",
+    "streetAddress2": "",
+    "city": "Anywhere",
+    "state": "FL",
+    "zipCode": "98765"
+  },
+  {
+    "firstName": "Linus",
+    "lastName": "Torvalds",
+    "phoneNumber": "+14445556666",
+    "streetAddress1": "202 Maple St",
+    "streetAddress2": "",
+    "city": "Everywhere",
+    "state": "IL",
+    "zipCode": "54321"
+  },
+  {
+    "firstName": "Tim",
+    "lastName": "Berners-Lee",
+    "phoneNumber": "+17778889999",
+    "streetAddress1": "303 Willow St",
+    "streetAddress2": "",
+    "city": "Somewhere Else",
+    "state": "WA",
+    "zipCode": "12345"
+  },
+  {
+    "firstName": "Larry",
+    "lastName": "Page",
+    "phoneNumber": "+12223334444",
+    "streetAddress1": "404 Cedar St",
+    "streetAddress2": "",
+    "city": "Another Place",
+    "state": "CO",
+    "zipCode": "54321"
+  },
+  {
+    "firstName": "Sergey",
+    "lastName": "Brin",
+    "phoneNumber": "+16667778888",
+    "streetAddress1": "505 Oak St",
+    "streetAddress2": "",
+    "city": "Somewhere Else",
+    "state": "NJ",
+    "zipCode": "12345"
+  },
+  {
+    "firstName": "Mark",
+    "lastName": "Zuckerberg",
+    "phoneNumber": "+13334445555",
+    "streetAddress1": "606 Pine St",
+    "streetAddress2": "",
+    "city": "Anywhere Else",
+    "state": "CA",
+    "zipCode": "54321"
+  },
+  {
+    "firstName": "Bill",
+    "lastName": "Gates",
+    "phoneNumber": "+18889990000",
+    "streetAddress1": "707 Maple St",
+    "streetAddress2": "",
+    "city": "Another Place",
+    "state": "TX",
+    "zipCode": "12345"
+  }
+]
