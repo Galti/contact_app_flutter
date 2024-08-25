@@ -38,6 +38,7 @@ dependencies:
   uuid: ^4.4.2
   path_provider: ^2.1.4
   logger: ^2.4.0
+  equatable: ^2.0.5
 
   # State management
   flutter_bloc: ^8.1.6
