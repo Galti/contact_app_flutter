@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
+import 'package:logger/logger.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 import 'package:uuid/uuid.dart';
@@ -65,22 +66,33 @@ class ObjectBox {
     String? city,
     String? state,
     String? zipCode,
-  }) =>
-      _contactsBox.putAsync(
-        Contact(
-          contactId: contactId ?? const Uuid().toString(),
-          firstName: firstName,
-          lastName: lastName,
-          phoneNumber: phoneNumber,
-          streetAddress1: streetAddress1,
-          streetAddress2: streetAddress2,
-          city: city,
-          state: state,
-          zipCode: zipCode,
-        ),
-      );
+  }) {
+    Logger().i('Add contact: firstName: $firstName, phoneNumber: $phoneNumber');
 
-  Future<void> updateContact(Contact contact) => _contactsBox.putAsync(contact);
+    return _contactsBox.putAsync(
+      Contact(
+        contactId: contactId ?? const Uuid().toString(),
+        firstName: firstName,
+        lastName: lastName,
+        phoneNumber: phoneNumber,
+        streetAddress1: streetAddress1,
+        streetAddress2: streetAddress2,
+        city: city,
+        state: state,
+        zipCode: zipCode,
+      ),
+    );
+  }
 
-  Future<void> removeContact(int id) => _contactsBox.removeAsync(id);
+  Future<void> updateContact(Contact contact) {
+    Logger().i('Update contact: ${contact.firstName}');
+
+    return _contactsBox.putAsync(contact);
+  }
+
+  Future<void> removeContact(int id) {
+    Logger().i('Remove contact: $id');
+
+    return _contactsBox.removeAsync(id);
+  }
 }
