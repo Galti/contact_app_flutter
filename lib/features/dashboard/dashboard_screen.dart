@@ -35,6 +35,13 @@ class DashboardScreen extends StatelessWidget {
           },
         ),
       ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          // Add your onPressed code here!
+        },
+        label: const Text('Add'),
+        icon: const Icon(Icons.add),
+      ),
     );
   }
 }
