@@ -1,5 +1,9 @@
+import 'package:contact_app_flutter/bloc/contact_bloc/contact_event.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../bloc/contact_bloc/contact_bloc.dart';
 import '../../local_database/models/contact_model.dart';
 
 class AddContactScreen extends StatefulWidget {
@@ -116,11 +120,31 @@ class _AddContactScreenState extends State<AddContactScreen> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          // const AddContactRoute().push(context);
+          if (widget.contact == null) {
+            return handleContactCreate();
+          }
         },
         label: Text(widget.contact == null ? 'Create' : 'Save'),
         // icon: const Icon(Icons.add),
       ),
     );
+  }
+
+  void handleContactCreate() {
+    if (firstNameController.text.isNotEmpty && phoneNumberController.text.isNotEmpty) {
+      context.read<ContactBloc>().add(
+            ContactCreated(
+              phoneNumber: phoneNumberController.text,
+              firstName: firstNameController.text,
+              lastName: lastNameController.text,
+              streetAddress1: str1Controller.text,
+              streetAddress2: str2Controller.text,
+              city: cityController.text,
+              state: stateController.text,
+              zipCode: zipController.text,
+            ),
+          );
+      context.pop();
+    }
   }
 }
